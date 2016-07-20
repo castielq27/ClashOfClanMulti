@@ -60,8 +60,10 @@ public class CoCInterfaces {
         if ( !CoCInterfaces.isBackuped(context)){
             CoCInterfaces.Backup(context);
         }
-        Shell.SuExecute2("rm /data/data/"+appDomain+"/"+ Control.backupAccount+"/*");
-        Shell.SuExecute2("cp -rp" + " " + "/data/data/" + appDomain + "/"+ Control.backupAccount + " " + "/data/data/" + appDomain + "/" + acc );
+        //Shell.SuExecute2("rm /data/data/"+appDomain+"/"+ Control.backupAccount+"/*");
+        //Shell.SuExecute2("cp -rp" + " " + "/data/data/" + appDomain + "/"+ Control.backupAccount + " " + "/data/data/" + appDomain + "/" + acc );
+        Shell.SuExecute2("mkdir" + " " + "/data/data/" + appDomain + "/"+ acc );
+        Shell.SuExecute2("chmod 777" + " " + "/data/data/" + appDomain + "/"+ acc );
     }
 
     private static boolean isFolderExists(Context context, String acc) throws IOException, InterruptedException {
@@ -95,7 +97,7 @@ public class CoCInterfaces {
 
     public static void Restore(Context context) throws IOException, InterruptedException {
         if ( isBackuped(context) ){
-            Shell.SuExecute2("rm /data/data/"+appDomain+"/shared_prefs");
+            Shell.SuExecute2("rm -r /data/data/"+appDomain+"/shared_prefs");
             Shell.SuExecute2("ln -s /data/data/"+appDomain+"/" + Control.backupAccount + " " + "/data/data/"+appDomain+"/shared_prefs");
             CoCInterfaces.ClearData(context);
         }

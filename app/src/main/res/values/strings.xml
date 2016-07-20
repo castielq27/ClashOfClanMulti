@@ -1,15 +1,8 @@
 <resources>
-    <string name="app_name">CoC-Multi</string>
+    <string name="app_name">COC Multiple Accounts</string>
+    <string name="action_about">About</string>
+    <string name="action_exit">Exit</string>
 
-    <string name="app_name1">CoCMulti-Settings</string>
-    <string name="app_name2">CoCMulti-1</string>
-    <string name="app_name3">CoCMulti-2</string>
+    <string name="Ads_Banner_ID">ca-app-pub-3940256099942544/6300978111</string>
 
-    <string name="CoC_domain_name">com.supercell.clashofclans</string>
-
-    <string name="CoC_backup_folder">CoC.BackUp</string>
-    <string name="CoC_data_multi_1">CoC.Multi.1</string>
-    <string name="CoC_data_multi_2">CoC.Multi.2</string>
-
-    <string name="action_settings">Settings</string>
 </resources>

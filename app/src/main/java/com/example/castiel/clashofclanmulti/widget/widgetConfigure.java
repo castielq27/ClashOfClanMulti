@@ -13,7 +13,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import clashofclanmulti.Control;
+import com.example.castiel.clashofclanmulti.clashofclanmulti.Control;
 
 /**
  * Created by castiel on 7/5/16.
@@ -58,8 +58,8 @@ public class widgetConfigure extends Activity {
         @Override
         public View getView(final int i, View view, ViewGroup viewGroup) {
             LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View row = inflater.inflate(com.example.castiel.clashofclanmulti.R.layout.select_widget_target_row_view, viewGroup, false);
-            TextView tv = (TextView) row.findViewById(com.example.castiel.clashofclanmulti.R.id.select_widget_target_row_view_accountName);
+            View row = inflater.inflate(com.castiel.clashofclanmulti.R.layout.select_widget_target_row_view, viewGroup, false);
+            TextView tv = (TextView) row.findViewById(com.castiel.clashofclanmulti.R.id.select_widget_target_row_view_accountName);
             tv.setText(this.accountNames[i]);
             row.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -102,9 +102,9 @@ public class widgetConfigure extends Activity {
             finish();
         }
 
-        this.setContentView(com.example.castiel.clashofclanmulti.R.layout.widget_config);
+        this.setContentView(com.castiel.clashofclanmulti.R.layout.widget_config);
 
-        this.listView = (ListView) this.findViewById(com.example.castiel.clashofclanmulti.R.id.widgetConfig_listView);
+        this.listView = (ListView) this.findViewById(com.castiel.clashofclanmulti.R.id.widgetConfig_listView);
         this.listView.setAdapter(new widgetTargetSelection(this.getApplicationContext()));
     }
 

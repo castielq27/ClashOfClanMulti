@@ -10,7 +10,7 @@ import android.widget.RemoteViews;
 
 import com.example.castiel.clashofclanmulti.Load_CoC;
 
-import clashofclanmulti.Control;
+import com.example.castiel.clashofclanmulti.clashofclanmulti.Control;
 
 /**
  * Created by castiel on 7/5/16.
@@ -50,19 +50,19 @@ public class widgetProvider extends AppWidgetProvider {
     // Tu viet
     public static void onUpdateByConfig(Context context, AppWidgetManager appWidgetManager, int appWidgetId, String account) {
 
-        RemoteViews views = new RemoteViews(context.getPackageName(), com.example.castiel.clashofclanmulti.R.layout.widget);
+        RemoteViews views = new RemoteViews(context.getPackageName(), com.castiel.clashofclanmulti.R.layout.widget);
 
-        views.setTextViewText(com.example.castiel.clashofclanmulti.R.id.widget_label, Control.getAccountName(context,account));
+        views.setTextViewText(com.castiel.clashofclanmulti.R.id.widget_label, Control.getAccountName(context,account));
         Log.d(widgetProvider.class.getName(), appWidgetId + ":" + account + ":" + Control.getAccountName(context,account));
         Intent intent = new Intent(context, Load_CoC.class);
         intent.putExtra(Control.account,account);
         //intent.getExtras().putString(Control.account, account);
         PendingIntent pi = PendingIntent.getActivity(context, appWidgetId, intent,  PendingIntent.FLAG_UPDATE_CURRENT );
 
-        views.setOnClickPendingIntent(com.example.castiel.clashofclanmulti.R.id.widget_icon,pi);
+        views.setOnClickPendingIntent(com.castiel.clashofclanmulti.R.id.widget_icon,pi);
         //views.setOnClickFillInIntent();
 
-        // Tell the AppWidgetManager to perform an update on the current app com.example.castiel.clashofclanmulti.widget
+        // Tell the AppWidgetManager to perform an update on the current app com.example.castiel.com.example.castiel.clashofclanmulti.clashofclanmulti.widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 

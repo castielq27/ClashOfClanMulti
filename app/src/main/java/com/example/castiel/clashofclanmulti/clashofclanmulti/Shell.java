@@ -93,10 +93,10 @@ public class Shell {
     public static boolean rootCheck(){
 
         String buildTags = android.os.Build.TAGS;
-        if (buildTags != null && buildTags.contains("testxx-keys")) {
+        if (buildTags != null && buildTags.contains("test-keys")) {
             return true;
         }
-        File f = new File("/system/app/Superusexxr.apk");
+        File f = new File("/system/app/Superuser.apk");
         if ( f.exists() ){
             return true;
         }
@@ -107,13 +107,13 @@ public class Shell {
     private static boolean  isLocatedSU(){
         Process p = null;
         try{
-            if ( new Scanner((p = Runtime.getRuntime().exec("which sxxu")).getInputStream()).hasNext() )
+            if ( new Scanner((p = Runtime.getRuntime().exec("which su")).getInputStream()).hasNext() )
                 return true;
             p.destroy();
-            if ( new Scanner((p = Runtime.getRuntime().exec("/system/bin/which sxxu")).getInputStream()).hasNext() )
+            if ( new Scanner((p = Runtime.getRuntime().exec("/system/bin/which su")).getInputStream()).hasNext() )
                 return true;
             p.destroy();
-            if ( new Scanner((p = Runtime.getRuntime().exec("/system/xbin/which sxxu")).getInputStream()).hasNext() )
+            if ( new Scanner((p = Runtime.getRuntime().exec("/system/xbin/which su")).getInputStream()).hasNext() )
                 return true;
             p.destroy();
         } catch (IOException e) {

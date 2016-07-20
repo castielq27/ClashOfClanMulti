@@ -8,7 +8,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import Model.Control;
+import com.castiel.clashofclanmulti.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
+import com.example.castiel.clashofclanmulti.clashofclanmulti.Control;
 
 /**
  * Created by castiel on 7/5/16.
@@ -27,10 +32,21 @@ public class Add_or_Rename extends Activity {
 
     private String account = "";
 
+
+
+    private AdView mAdView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.add_or_rename);
+
+        MobileAds.initialize(this, this.getString(R.string.Ads_Banner_ID));
+        mAdView = (AdView) findViewById(R.id.ad_view);
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+        mAdView.loadAd(adRequest);
+
 
         this.accountName = (EditText) this.findViewById(R.id.add_editText_accountName);
         this.add_or_rename = (Button) this.findViewById(R.id.add_btn_add_or_rename);
@@ -43,8 +59,10 @@ public class Add_or_Rename extends Activity {
         if ( this.account == null || this.account.length() <= 0 || this.labelButton == null || this.labelButton.length() <= 0 ){
             this.finish();
         }
-        this.add_or_rename.setText( this.labelButton );
 
+
+        this.add_or_rename.setText( this.labelButton );
+        this.accountName.setText( Control.getAccountName(this.getApplicationContext(), this.account));
 
 
         this.add_or_rename.setOnClickListener(new View.OnClickListener() {
@@ -66,5 +84,13 @@ public class Add_or_Rename extends Activity {
                 Add_or_Rename.this.finish();
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if ( this.mAdView != null ){
+            this.mAdView.destroy();
+        }
     }
 }
